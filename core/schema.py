@@ -16,7 +16,7 @@ class Query(graphene.ObjectType):
   my_ingredients = graphene.List(IngredientType)
   category_by_name = graphene.Field(CategoryType, name=graphene.String(required=True))
   
-  def resolve_my_ingredients(root, info):
+  def resolve_all_ingredients(root, info):
     return Ingredient.objects.select_related('category').all()
   
   def resolve_category_by_name(root, info, name):
